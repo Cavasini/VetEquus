@@ -41,7 +41,7 @@ export default function FolicularForm({ animalId, agId, onSaved }: { animalId: s
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <DiametroPicker label="Ovário Direito" value={ovD} onChange={setOvD} />
         <DiametroPicker label="Ovário Esquerdo" value={ovE} onChange={setOvE} />
       </div>
@@ -52,7 +52,7 @@ export default function FolicularForm({ animalId, agId, onSaved }: { animalId: s
           ))}
         </div>
       </Field>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <Field label="Tônus uterino">
           <div className="flex gap-1.5">
             {(['Flácido', 'Médio', 'Tônico'] as const).map((t) => (

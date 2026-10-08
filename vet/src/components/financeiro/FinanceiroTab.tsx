@@ -35,9 +35,9 @@ export default function FinanceiroTab() {
   return (
     <div className="space-y-5">
       <h1 className="text-2xl font-extrabold text-slate-800">Administrativo e Financeiro</h1>
-      <div className="flex w-fit gap-1 rounded-lg bg-slate-100 p-1">
+      <div className="flex w-fit max-w-full overflow-x-auto gap-1 rounded-lg bg-slate-100 p-1">
         {([['faturamento', 'Faturamento', Receipt], ['termos', 'Termos Jurídicos', FileSignature]] as const).map(([k, l, Icon]) => (
-          <button key={k} onClick={() => setSub(k)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold ${sub === k ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {l}</button>
+          <button key={k} onClick={() => setSub(k)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 whitespace-nowrap text-sm font-semibold ${sub === k ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {l}</button>
         ))}
       </div>
 
@@ -46,9 +46,9 @@ export default function FinanceiroTab() {
       {sub === 'faturamento' && (
         <>
           <div className="card flex flex-wrap items-end gap-3 p-4">
-            {harasFiltro === 'todos' && <Field label="Haras"><select className="input !w-52" value={harasId} onChange={(e) => setHarasId(e.target.value)}>{db.haras.map((h) => <option key={h.id} value={h.id}>{h.nome}</option>)}</select></Field>}
-            <Field label="Procedimento"><select className="input !w-56" value={proc} onChange={(e) => setProc(Number(e.target.value))}>{PROCS.map((p, i) => <option key={p.d} value={i}>{p.d} — {brl(p.v)}</option>)}</select></Field>
-            <Field label="Qtd"><input type="number" min={1} className="input !w-24" value={qtd} onChange={(e) => setQtd(Math.max(1, Number(e.target.value)))} /></Field>
+            {harasFiltro === 'todos' && <Field label="Haras"><select className="input sm:!w-52" value={harasId} onChange={(e) => setHarasId(e.target.value)}>{db.haras.map((h) => <option key={h.id} value={h.id}>{h.nome}</option>)}</select></Field>}
+            <Field label="Procedimento"><select className="input sm:!w-56" value={proc} onChange={(e) => setProc(Number(e.target.value))}>{PROCS.map((p, i) => <option key={p.d} value={i}>{p.d} — {brl(p.v)}</option>)}</select></Field>
+            <Field label="Qtd"><input type="number" min={1} className="input sm:!w-24" value={qtd} onChange={(e) => setQtd(Math.max(1, Number(e.target.value)))} /></Field>
             <button className="btn-secondary" onClick={() => addLancamento({ harasId: hs, data: todayISO(), descricao: PROCS[proc].d, qtd, valorUnit: PROCS[proc].v })}><Plus size={16} /> Lançar</button>
             <div className="ml-auto text-right">
               <div className="text-xs font-semibold uppercase text-slate-400">Em aberto</div>
@@ -58,7 +58,7 @@ export default function FinanceiroTab() {
           </div>
           {harasFiltro === 'todos' && <p className="-mt-3 text-xs text-slate-500">Selecione um haras específico no cabeçalho para fechar a fatura.</p>}
 
-          <div className="card overflow-hidden">
+          <div className="card overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500"><tr><th className="px-4 py-3">Data</th><th>Haras</th><th>Procedimento</th><th className="text-right">Qtd</th><th className="text-right">Unit.</th><th className="px-4 text-right">Total</th></tr></thead>
               <tbody>

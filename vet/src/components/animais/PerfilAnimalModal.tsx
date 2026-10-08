@@ -25,7 +25,7 @@ export default function PerfilAnimalModal({ animal, onClose }: { animal: Animal;
           <CatBadge cat={animal.categoria} /><Tag>{animal.status}</Tag>
           {animal.diaPosOv != null && <Tag color="blue">D{animal.diaPosOv} pós-ovulação</Tag>}
         </div>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {dados.map(([k, v]) => (
             <div key={k} className="rounded-lg bg-slate-50 p-3">
               <div className="text-[11px] font-semibold uppercase text-slate-400">{k}</div>
@@ -34,7 +34,7 @@ export default function PerfilAnimalModal({ animal, onClose }: { animal: Animal;
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h4 className="mb-2 font-bold text-slate-700">Vacinas e vermífugos</h4>
             <div className="space-y-1.5">

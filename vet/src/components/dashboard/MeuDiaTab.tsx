@@ -40,7 +40,7 @@ export default function MeuDiaTab() {
         <p className="text-sm text-slate-500">{new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</p>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {cards.map(({ l, v, i: Icon, c }) => (
           <div key={l} className="card flex items-center gap-4 p-5">
             <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${c}`}><Icon size={24} /></div>
@@ -52,8 +52,8 @@ export default function MeuDiaTab() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
-        <div className="card col-span-2 p-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="card lg:col-span-2 p-5">
           <h2 className="mb-4 flex items-center gap-2 font-bold text-slate-800"><ClipboardCheck size={20} className="text-brand-500" /> Ações do dia</h2>
           {pendentes.length === 0 ? <Empty text="🎉 Nenhuma ação pendente para hoje." /> : (
             <div className="space-y-2">
@@ -63,7 +63,7 @@ export default function MeuDiaTab() {
                 const label = isDG(a.subtipo) ? a.subtipo : a.subtipo === 'LAVAGEM' ? 'Lavagem' : a.subtipo === 'FOLICULAR' ? 'Folicular' : 'Atendimento'
                 const cor = isDG(a.subtipo) ? 'green' : a.subtipo === 'LAVAGEM' ? 'sky' : a.subtipo === 'FOLICULAR' ? 'purple' : 'slate'
                 return (
-                  <div key={a.id} className="flex items-center gap-4 rounded-xl border border-slate-200 p-3 hover:bg-slate-50">
+                  <div key={a.id} className="flex flex-wrap items-center gap-3 sm:gap-4 rounded-xl border border-slate-200 p-3 hover:bg-slate-50">
                     <div className="w-14 text-center text-sm font-bold text-slate-700">{a.hora}</div>
                     <Tag color={cor}>{label}</Tag>
                     <div className="min-w-0 flex-1">

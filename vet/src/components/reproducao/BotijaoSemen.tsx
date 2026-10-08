@@ -18,7 +18,7 @@ export default function BotijaoSemen() {
   const saldoCan = (c: number) => palhetas.filter((p) => p.canister === c).reduce((s, p) => s + p.saldo, 0)
 
   return (
-    <div className="grid grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
       <div className="card p-4">
         <h3 className="mb-3 font-bold text-slate-700">Botijão criogênico</h3>
         <div className="grid grid-cols-3 gap-2">
@@ -48,7 +48,7 @@ export default function BotijaoSemen() {
         )}
       </div>
 
-      <div className="card col-span-2 overflow-hidden">
+      <div className="card lg:col-span-2 overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500">
             <tr><th className="px-4 py-3">Garanhão</th><th>Lote</th><th>Congelamento</th><th>Mot.</th><th>Vigor</th><th>Local</th><th>Saldo</th><th /></tr>

@@ -75,9 +75,9 @@ export default function AgendaTab() {
       </div>
 
       {modo === 'semana' && (
-        <div className="grid grid-cols-7 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
           {semana.map((iso) => (
-            <div key={iso} className={`card min-h-64 p-2 ${iso === hoje ? 'border-brand-500 ring-1 ring-brand-500' : ''}`}>
+            <div key={iso} className={`card md:min-h-64 p-2 ${iso === hoje ? 'border-brand-500 ring-1 ring-brand-500' : ''}`}>
               <button className="mb-2 w-full cursor-pointer text-left" onClick={() => { setRef(iso); setModo('lista') }}>
                 <div className="text-xs font-semibold text-slate-400">{DIAS_SEMANA[parseISO(iso).getDay()]}</div>
                 <div className="text-lg font-bold text-slate-800">{parseISO(iso).getDate()}</div>
@@ -98,7 +98,7 @@ export default function AgendaTab() {
               const fora = parseISO(iso).getMonth() !== parseISO(ref).getMonth()
               const itens = porDia(iso)
               return (
-                <div key={iso} onClick={() => { setRef(iso); setModo('lista') }} className={`min-h-24 cursor-pointer border-b border-r border-slate-100 p-1.5 hover:bg-slate-50 ${fora ? 'bg-slate-50/60 text-slate-300' : ''}`}>
+                <div key={iso} onClick={() => { setRef(iso); setModo('lista') }} className={`min-h-16 sm:min-h-24 cursor-pointer border-b border-r border-slate-100 p-1.5 hover:bg-slate-50 ${fora ? 'bg-slate-50/60 text-slate-300' : ''}`}>
                   <div className={`mb-1 text-xs font-bold ${iso === hoje ? 'inline-block rounded-full bg-brand-500 px-1.5 text-white' : ''}`}>{parseISO(iso).getDate()}</div>
                   <div className="space-y-0.5">
                     {itens.slice(0, 2).map((a) => <Chip key={a.id} a={a} />)}
@@ -117,7 +117,7 @@ export default function AgendaTab() {
           {porDia(ref).length === 0 ? <Empty text="Nenhum agendamento neste dia." /> : (
             <div className="space-y-2">
               {porDia(ref).map((a) => (
-                <div key={a.id} className={`flex items-center gap-4 rounded-xl border p-3 ${a.concluido ? 'bg-slate-50 opacity-60' : ''}`}>
+                <div key={a.id} className={`flex flex-wrap items-center gap-3 sm:gap-4 rounded-xl border p-3 ${a.concluido ? 'bg-slate-50 opacity-60' : ''}`}>
                   <div className="w-14 text-sm font-bold text-slate-700">{a.hora}</div>
                   <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${COR[a.tipo]}`}>{a.tipo}</span>
                   <div className="flex-1">

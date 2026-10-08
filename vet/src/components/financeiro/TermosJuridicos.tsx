@@ -58,13 +58,13 @@ export default function TermosJuridicos() {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div className="card space-y-4 p-5">
         <h3 className="font-bold text-slate-800">Novo termo</h3>
         <Field label="Modelo">
           <select className="input" value={modelo} onChange={(e) => setModelo(e.target.value)}>{Object.keys(MODELOS).map((m) => <option key={m}>{m}</option>)}</select>
         </Field>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Haras / Cliente"><select className="input" value={harasId} onChange={(e) => { setHarasId(e.target.value); setAnimalId('') }}>{db.haras.map((h) => <option key={h.id} value={h.id}>{h.nome}</option>)}</select></Field>
           <Field label="Animal"><select className="input" value={animalId} onChange={(e) => setAnimalId(e.target.value)}><option value="">Selecione...</option>{animais.map((a) => <option key={a.id} value={a.id}>{a.nome}</option>)}</select></Field>
         </div>

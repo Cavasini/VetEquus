@@ -15,9 +15,9 @@ export default function ReproducaoTab() {
   return (
     <div className="space-y-5">
       <h1 className="text-2xl font-extrabold text-slate-800">Reprodução</h1>
-      <div className="flex w-fit gap-1 rounded-lg bg-slate-100 p-1">
+      <div className="flex w-fit max-w-full overflow-x-auto gap-1 rounded-lg bg-slate-100 p-1">
         {SUBS.map(({ id, label, icon: Icon }) => (
-          <button key={id} onClick={() => setSub(id)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold ${sub === id ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {label}</button>
+          <button key={id} onClick={() => setSub(id)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 whitespace-nowrap text-sm font-semibold ${sub === id ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {label}</button>
         ))}
       </div>
       {sub === 'match' && <MatchPanel />}

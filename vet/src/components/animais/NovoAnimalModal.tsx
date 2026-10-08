@@ -29,8 +29,8 @@ export default function NovoAnimalModal({ onClose }: { onClose: () => void }) {
       onClose={onClose}
       footer={<><button className="btn-secondary" onClick={onClose}>Cancelar</button><button className="btn-primary" disabled={!f.nome.trim()} onClick={salvar}>Salvar animal</button></>}
     >
-      <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2"><Field label="Nome"><input className="input" value={f.nome} onChange={(e) => set('nome', e.target.value)} /></Field></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="sm:col-span-2"><Field label="Nome"><input className="input" value={f.nome} onChange={(e) => set('nome', e.target.value)} /></Field></div>
         <Field label="Categoria">
           <select className="input" value={f.categoria} onChange={(e) => set('categoria', e.target.value as Categoria)}>
             {['Doadora', 'Receptora', 'Garanhão', 'Potro'].map((c) => <option key={c}>{c}</option>)}

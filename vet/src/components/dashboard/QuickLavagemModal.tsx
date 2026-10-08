@@ -28,7 +28,7 @@ export default function QuickLavagemModal({ ag, onClose }: { ag: Agendamento; on
       }
     >
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[true, false].map((v) => (
             <button key={String(v)} onClick={() => setPositiva(v)} className={`cursor-pointer rounded-xl border-2 py-4 font-bold ${positiva === v ? (v ? 'border-emerald-400 bg-emerald-50 text-emerald-700' : 'border-red-400 bg-red-50 text-red-700') : 'border-slate-200 text-slate-400'}`}>
               {v ? 'Positiva' : 'Negativa'}

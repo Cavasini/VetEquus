@@ -36,15 +36,15 @@ export default function ClinicaTab() {
   return (
     <div className="space-y-5">
       <h1 className="text-2xl font-extrabold text-slate-800">Prontuário Clínico e Preventivo</h1>
-      <div className="flex w-fit gap-1 rounded-lg bg-slate-100 p-1">
+      <div className="flex w-fit max-w-full overflow-x-auto gap-1 rounded-lg bg-slate-100 p-1">
         {SUBS.map(({ id, label, icon: Icon }) => (
-          <button key={id} onClick={() => setSub(id)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 text-sm font-semibold ${sub === id ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {label}</button>
+          <button key={id} onClick={() => setSub(id)} className={`flex cursor-pointer items-center gap-2 rounded-md px-5 py-2 whitespace-nowrap text-sm font-semibold ${sub === id ? 'bg-white text-brand-600 shadow-sm' : 'text-slate-500'}`}><Icon size={16} /> {label}</button>
         ))}
       </div>
 
       {(sub === 'consultas' || sub === 'biometria') && (
         <div className="card flex items-center gap-3 p-3">
-          <div className="w-80"><Field label="Animal">
+          <div className="w-full sm:w-80"><Field label="Animal">
             <select className="input" value={sel} onChange={(e) => setAnimalId(e.target.value)}>
               {animaisF.map((a) => <option key={a.id} value={a.id}>{a.nome} ({a.categoria})</option>)}
             </select>
@@ -53,10 +53,10 @@ export default function ClinicaTab() {
       )}
 
       {sub === 'consultas' && (
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="card space-y-4 p-5">
             <h3 className="font-bold text-slate-800">Novo atendimento</h3>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               <Field label="Temp °C"><input type="number" step="0.1" className="input" value={f.temperatura} onChange={(e) => set('temperatura', Number(e.target.value))} /></Field>
               <Field label="FC bpm"><input type="number" className="input" value={f.fc} onChange={(e) => set('fc', Number(e.target.value))} /></Field>
               <Field label="FR mpm"><input type="number" className="input" value={f.fr} onChange={(e) => set('fr', Number(e.target.value))} /></Field>
@@ -89,7 +89,7 @@ export default function ClinicaTab() {
 
       {sub === 'midia' && (
         midias.length === 0 ? <Empty text="Sem mídias." /> : (
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {midias.map((m) => (
               <div key={m.id} className="card overflow-hidden">
                 <div className={`flex h-36 items-center justify-center bg-gradient-to-br text-white/80 ${MIDIA_COR[m.tipo]}`}>{m.tipo === 'Exame' ? <FileText size={40} /> : <Camera size={40} />}</div>

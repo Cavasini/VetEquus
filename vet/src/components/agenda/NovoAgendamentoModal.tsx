@@ -33,7 +33,7 @@ export default function NovoAgendamentoModal({ onClose, dataInicial }: { onClose
         </>
       }
     >
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Data"><input type="date" className="input" value={data} onChange={(e) => setData(e.target.value)} /></Field>
         <Field label="Horário"><input type="time" className="input" value={hora} onChange={(e) => setHora(e.target.value)} /></Field>
         <Field label="Haras">
@@ -47,14 +47,14 @@ export default function NovoAgendamentoModal({ onClose, dataInicial }: { onClose
             {animais.map((a) => <option key={a.id} value={a.id}>{a.nome} ({a.categoria})</option>)}
           </select>
         </Field>
-        <div className="col-span-2">
+        <div className="sm:col-span-2">
           <Field label="Tipo">
             <select className="input" value={tipo} onChange={(e) => setTipo(e.target.value as TipoAgenda)}>
               {TIPOS.map((t) => <option key={t}>{t}</option>)}
             </select>
           </Field>
         </div>
-        <div className="col-span-2">
+        <div className="sm:col-span-2">
           <Field label="Observação"><textarea className="input" rows={3} value={obs} onChange={(e) => setObs(e.target.value)} /></Field>
         </div>
       </div>

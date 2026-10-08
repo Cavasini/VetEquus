@@ -35,7 +35,7 @@ export default function MatchPanel() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="card p-4">
           <h3 className="mb-3 font-bold text-purple-700">Doadoras · embriões disponíveis</h3>
           <div className="space-y-3">
@@ -99,7 +99,7 @@ export default function MatchPanel() {
         </div>
       </div>
 
-      <div className="card flex items-center justify-between p-4">
+      <div className="card flex flex-wrap gap-3 items-center justify-between p-4">
         <div className="flex items-center gap-3 text-sm text-slate-600">
           <span className="font-bold text-purple-700">{doadoraSel ? `${doadoraSel.nome} (grau ${emb?.grau})` : 'Doadora/embrião'}</span>
           <ArrowRight size={18} />

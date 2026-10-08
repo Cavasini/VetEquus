@@ -30,11 +30,11 @@ export default function FolicularInducao() {
   return (
     <div className="space-y-5">
       <div className="card flex items-center gap-3 p-4">
-        <Field label="Égua"><select className="input !w-72" value={animalSel} onChange={(e) => setAnimalId(e.target.value)}>
+        <Field label="Égua"><select className="input sm:!w-72" value={animalSel} onChange={(e) => setAnimalId(e.target.value)}>
           {eguas.map((e) => <option key={e.id} value={e.id}>{e.nome} ({e.categoria})</option>)}
         </select></Field>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="card p-5">
           <h3 className="mb-4 font-bold text-slate-800">Exame folicular</h3>
           <FolicularForm key={animalSel} animalId={animalSel} />
